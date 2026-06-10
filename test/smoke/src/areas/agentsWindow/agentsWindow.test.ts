@@ -455,15 +455,7 @@ export function setup(logger: Logger) {
 			},
 		});
 
-		// Skipped on every platform: the SDK-sandbox shell path currently fails
-		// everywhere. On macOS/Linux the SDK's built-in shell can't load its
-		// prebuilt `pty.node` while the mxc sandbox is active
-		// (`Cannot find module './prebuilds/<platform>/pty.node'`), and on
-		// Windows the `wxc-exec.exe` runner isn't found. Re-enable once the
-		// runtime resolves the sandboxed shell binary on all platforms.
-		// See the Copilot CLI sandbox test above for where to find logs when
-		// debugging CI runs.
-		it.skip('Test Copilot CLI session via AgentHost (SDK sandbox)', async function () {
+		it('Test Copilot CLI session via AgentHost (SDK sandbox)', async function () {
 			this.timeout(5 * 60 * 1000);
 
 			const app = this.app as Application;
